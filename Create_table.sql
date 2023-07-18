@@ -21,8 +21,7 @@ CREATE TABLE IF NOT EXISTS ArtistGenres (
 CREATE TABLE IF NOT EXISTS Albums (
   album_id SERIAL PRIMARY KEY,
   title VARCHAR(255) UNIQUE,
-  year INTEGER CHECK (year >= 1900),
-  artist_id INTEGER REFERENCES ArtistAlbum(artist)
+  year INTEGER CHECK (year >= 1900)  
 );
 
 --таблица промежуточная ArtistAlbum

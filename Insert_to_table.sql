@@ -28,7 +28,7 @@ VALUES
   (6, 2);
 
 -- Вставка записей в таблицу Albums
-INSERT INTO Albums (title, year)
+INSERT INTO ArtistAlbum (title, year)
 VALUES
   ('The Number of the Beast', 1982),
   ('Master of Puppets', 1986),

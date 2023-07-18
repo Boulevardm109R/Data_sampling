@@ -55,9 +55,9 @@ GROUP BY a.title;
 SELECT Artists.name
 FROM Artists
 WHERE Artists.artist_id NOT IN (
-    SELECT AlbumArtists.artist_id
-    FROM AlbumArtists
-    JOIN Albums ON AlbumArtists.album_id = Albums.album_id
+    SELECT ArtistAlbum.artist_id
+    FROM ArtistAlbum
+    JOIN Albums ON ArtistAlbum.album_id = Albums.album_id
     WHERE Albums.year = 2020
 );
 
@@ -68,16 +68,16 @@ FROM Collections
 JOIN CollectionTracks ON Collections.collection_id = CollectionTracks.collection_id
 JOIN Tracks ON CollectionTracks.track_id = Tracks.track_id
 JOIN Albums ON Tracks.album_id = Albums.album_id
-JOIN AlbumArtists ON Albums.album_id = AlbumArtists.album_id
-JOIN Artists ON AlbumArtists.artist_id = Artists.artist_id
+JOIN ArtistAlbum ON Albums.album_id = ArtistAlbum.album_id
+JOIN Artists ON ArtistAlbum.artist_id = Artists.artist_id
 WHERE Artists.name = 'Iron Maiden';
 
 
 --Названия альбомов, в которых присутствуют исполнители более чем одного жанра
 SELECT DISTINCT Albums.title
 FROM Albums
-JOIN AlbumArtists ON Albums.album_id = AlbumArtists.album_id
-JOIN Artists ON AlbumArtists.artist_id = Artists.artist_id
+JOIN ArtistAlbum ON Albums.album_id = ArtistAlbum.album_id
+JOIN Artists ON ArtistAlbum.artist_id = Artists.artist_id
 JOIN ArtistGenres ON Artists.artist_id = ArtistGenres.artist_id
 GROUP BY Albums.title, ArtistGenres.artist_id
 HAVING COUNT(DISTINCT ArtistGenres.genre_id) > 1;
@@ -94,7 +94,7 @@ WHERE ct.collection_id IS NULL;
 SELECT Artists.name AS artist
 FROM Tracks
 JOIN Albums ON Albums.album_id = Tracks.album_id
-JOIN Artists ON Artists.artist_id = Albums.artist_id
+JOIN Artists ON Artists.artist_id = ArtistAlbum.artist_id
 WHERE Tracks.duration = (
   SELECT MIN(duration)
   FROM Tracks

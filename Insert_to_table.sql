@@ -27,7 +27,7 @@ VALUES
   (5, 3),
   (6, 2);
 
--- Вставка записей в таблицу Albums
+-- Вставка записей в таблицу ArtistAlbum
 INSERT INTO ArtistAlbum (title, year)
 VALUES
   ('The Number of the Beast', 1982),

@@ -94,6 +94,7 @@ WHERE ct.collection_id IS NULL;
 SELECT Artists.name AS artist
 FROM Tracks
 JOIN Albums ON Albums.album_id = Tracks.album_id
+JOIN ArtistAlbum ON Albums.album_id = ArtistAlbum.album_id
 JOIN Artists ON Artists.artist_id = ArtistAlbum.artist_id
 WHERE Tracks.duration = (
   SELECT MIN(duration)

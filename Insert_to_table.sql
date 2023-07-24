@@ -27,8 +27,8 @@ VALUES
   (5, 3),
   (6, 2);
 
--- Вставка записей в таблицу ArtistAlbum
-INSERT INTO ArtistAlbum (title, year)
+-- Вставка записей в таблицу Album
+INSERT INTO Album (title, year)
 VALUES
   ('The Number of the Beast', 1982),
   ('Master of Puppets', 1986),
@@ -43,6 +43,21 @@ VALUES
   ('Distance Over Time', 2019),
   ('Gigaton', 2020);
 
+--вставка в ArtistAlbum
+INSERT INTO ArtistAlbum (artist_id, album_id)
+VALUES
+(1, 1),
+(1, 4),
+(2, 2),
+(2, 3),
+(3, 5),
+(3, 9),
+(4,10),
+(4, 11),
+(5, 6),
+(5, 7),
+(6, 8),
+(6, 12);
 
 -- Вставка записей в таблицу Tracks
 INSERT INTO Tracks (title, duration, album_id)
@@ -89,7 +104,6 @@ VALUES
   (5, 10),
   (6, 11),
   (7, 12);
-
 
 
 
